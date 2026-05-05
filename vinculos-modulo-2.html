@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Módulo 02 · La Ruptura de Los Vínculos Ocultos</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Lato:wght@300;400&display=swap');
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blush: #f5ece8; --rose: #d4a5a0; --sage: #b5c4b1;
+      --cream: #fdf8f5; --text: #4a3f3a; --muted: #8c7b76;
+    }
+    body {
+      font-family: 'Lato', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: linear-gradient(160deg, #f0e8e4 0%, #e8efe6 100%);
+      padding: 40px 24px 32px;
+      text-align: center;
+    }
+    .back {
+      display: inline-block;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      margin-bottom: 20px;
+    }
+    .back:hover { color: var(--rose); }
+    .course-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--rose);
+      margin-bottom: 8px;
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+      line-height: 1.25;
+    }
+    .module-badge {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: rgba(181,196,177,0.25);
+      padding: 4px 14px;
+      border-radius: 20px;
+    }
+    main {
+      flex: 1;
+      max-width: 860px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 4px 32px rgba(74,63,58,0.12);
+      background: linear-gradient(135deg, #f0e8e4, #e8efe6);
+    }
+    .video-wrapper iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .nav-hint {
+      text-align: center;
+      margin-top: 36px;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    .nav-hint a {
+      color: var(--rose);
+      text-decoration: none;
+    }
+    .nav-hint a:hover { text-decoration: underline; }
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      border-top: 1px solid rgba(181,196,177,0.3);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="back" href="index.html">← Volver al inicio</a>
+    <div class="course-label">La Ruptura de Los Vínculos Ocultos</div>
+    <h1>El Proceso de Soltar</h1>
+    <span class="module-badge">Módulo 02</span>
+  </header>
+  <main>
+    <div class="video-wrapper">
+      <iframe src="https://www.youtube.com/embed/_hwV-7Vv2Zw" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+    </div>
+    <p class="nav-hint">
+      <a href="vinculos-modulo-1.html">← Módulo 01</a>
+      &nbsp;·&nbsp;
+      <a href="vinculos-modulo-3.html">Módulo 03 →</a>
+    </p>
+  </main>
+  <footer>Con amor · Para tu sanación y libertad ✦</footer>
+</body>
+</html>
