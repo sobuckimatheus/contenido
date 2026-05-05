@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cursos de Sanación</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Lato:wght@300;400&display=swap');
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --blush:    #f5ece8;
+      --rose:     #d4a5a0;
+      --sage:     #b5c4b1;
+      --cream:    #fdf8f5;
+      --text:     #4a3f3a;
+      --muted:    #8c7b76;
+      --white:    #ffffff;
+    }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(160deg, #f0e8e4 0%, #e8efe6 60%, #f5ece8 100%);
+      padding: 72px 24px 56px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 30%, rgba(181,196,177,0.25) 0%, transparent 65%),
+                  radial-gradient(ellipse at 20% 80%, rgba(212,165,160,0.18) 0%, transparent 55%);
+      pointer-events: none;
+    }
+
+    .hero-petal {
+      font-size: 2.4rem;
+      letter-spacing: 0.4rem;
+      margin-bottom: 20px;
+      opacity: 0.65;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      line-height: 1.25;
+      color: var(--text);
+      max-width: 680px;
+      margin: 0 auto 12px;
+    }
+
+    .hero p {
+      font-weight: 300;
+      font-size: 1rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      justify-content: center;
+      margin: 40px auto 0;
+      max-width: 340px;
+    }
+
+    .divider span {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--rose), transparent);
+    }
+
+    .divider i {
+      font-style: normal;
+      font-size: 1.1rem;
+      opacity: 0.55;
+    }
+
+    /* ── MAIN CONTENT ── */
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 64px 24px 96px;
+    }
+
+    /* ── COURSE BLOCK ── */
+    .course {
+      margin-bottom: 72px;
+    }
+
+    .course-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .course-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .course-icon.rose-icon  { background: rgba(212,165,160,0.22); }
+    .course-icon.sage-icon  { background: rgba(181,196,177,0.28); }
+
+    .course-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: clamp(1.35rem, 3vw, 1.85rem);
+      line-height: 1.2;
+    }
+
+    .course-subtitle {
+      font-size: 0.82rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+
+    /* ── VIDEO GRID ── */
+    .video-grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    .video-grid.cols-3 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .video-grid.cols-1 { grid-template-columns: 1fr; max-width: 560px; }
+
+    /* ── VIDEO CARD ── */
+    .video-card {
+      background: var(--white);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 2px 18px rgba(74,63,58,0.07);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .video-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(74,63,58,0.12);
+    }
+
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 */
+      background: linear-gradient(135deg, #f0e8e4, #e8efe6);
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* placeholder shown when src is empty */
+    .video-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+    }
+
+    .video-placeholder .play-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: rgba(212,165,160,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+    }
+
+    .video-info {
+      padding: 18px 20px 20px;
+    }
+
+    .video-number {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--rose);
+      margin-bottom: 5px;
+    }
+
+    .video-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    /* ── SEPARATOR ── */
+    .section-sep {
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--sage), transparent);
+      margin: 0 0 72px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      border-top: 1px solid rgba(181,196,177,0.3);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-petal">✦ ✦ ✦</div>
+    <h1>Cursos de Sanación<br>y Liberación Interior</h1>
+    <p>Un espacio de encuentro contigo misma · con amor y presencia</p>
+    <div class="divider">
+      <span></span><i>🌿</i><span></span>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ══ CURSO 1 ══ -->
+    <section class="course" id="curso-vinculos">
+      <div class="course-header">
+        <div class="course-icon rose-icon">🌸</div>
+        <div>
+          <div class="course-title">La Ruptura de Los Vínculos Ocultos</div>
+          <div class="course-subtitle">3 módulos de transformación</div>
+        </div>
+      </div>
+
+      <div class="video-grid cols-3">
+
+        <!-- Vídeo 1 -->
+        <div class="video-card">
+          <div class="video-wrapper">
+            <!-- Substitua src="" pelo link embed do vídeo 1 -->
+            <iframe id="video-vinculos-1" src="https://www.youtube.com/embed/9CoxKMAoUqc" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+            <div class="video-placeholder" id="ph-vinculos-1">
+              <div class="play-icon">▷</div>
+              <span>Vídeo 1</span>
+            </div>
+          </div>
+          <div class="video-info">
+            <div class="video-number">Módulo 01</div>
+            <div class="video-name">Reconociendo los Vínculos</div>
+          </div>
+        </div>
+
+        <!-- Vídeo 2 -->
+        <div class="video-card">
+          <div class="video-wrapper">
+            <iframe id="video-vinculos-2" src="https://www.youtube.com/embed/_hwV-7Vv2Zw" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+            <div class="video-placeholder" id="ph-vinculos-2">
+              <div class="play-icon">▷</div>
+              <span>Vídeo 2</span>
+            </div>
+          </div>
+          <div class="video-info">
+            <div class="video-number">Módulo 02</div>
+            <div class="video-name">El Proceso de Soltar</div>
+          </div>
+        </div>
+
+        <!-- Vídeo 3 -->
+        <div class="video-card">
+          <div class="video-wrapper">
+            <iframe id="video-vinculos-3" src="https://www.youtube.com/embed/i-4RtJNu8IQ" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+            <div class="video-placeholder" id="ph-vinculos-3">
+              <div class="play-icon">▷</div>
+              <span>Vídeo 3</span>
+            </div>
+          </div>
+          <div class="video-info">
+            <div class="video-number">Módulo 03</div>
+            <div class="video-name">La Liberación Profunda</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="section-sep"></div>
+
+    <!-- ══ CURSO 2 ══ -->
+    <section class="course" id="curso-promesa">
+      <div class="course-header">
+        <div class="course-icon sage-icon">🌿</div>
+        <div>
+          <div class="course-title">Romper la Promesa</div>
+          <div class="course-subtitle">1 módulo de sanación</div>
+        </div>
+      </div>
+
+      <div class="video-grid cols-1">
+
+        <!-- Vídeo único -->
+        <div class="video-card">
+          <div class="video-wrapper">
+            <!-- Substitua src="" pelo link embed do vídeo -->
+            <iframe id="video-promesa-1" src="https://www.youtube.com/embed/FFbqM3RO0WQ" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+            <div class="video-placeholder" id="ph-promesa-1">
+              <div class="play-icon">▷</div>
+              <span>Vídeo</span>
+            </div>
+          </div>
+          <div class="video-info">
+            <div class="video-number">Módulo 01</div>
+            <div class="video-name">Rompiendo el Acuerdo del Alma</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    Con amor · Para tu sanación y libertad &nbsp;✦
+  </footer>
+
+  <script>
+    // Oculta o placeholder quando o iframe tiver src real
+    document.querySelectorAll('.video-wrapper iframe').forEach(iframe => {
+      if (iframe.src && iframe.src !== window.location.href) {
+        const ph = iframe.nextElementSibling;
+        if (ph) ph.style.display = 'none';
+      }
+    });
+  </script>
+
+</body>
+</html>
